@@ -1,0 +1,7 @@
+{
+    "orgName": "Hospital Room Manager Company",
+    "edition": "Developer",
+    "orgPreferences" : {
+        "enabled": ["S1DesktopEnabled"]
+    }
+}
