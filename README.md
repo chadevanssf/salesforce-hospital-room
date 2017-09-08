@@ -10,6 +10,8 @@ Providing the business side of the Alexa interface for Hospital Room Manager.
 
 ## Installation Instructions
 
+### Salesforce DX (SFDX) CLI
+
 1. Authenticate with your hub org (if not already done):
     ```
     sfdx force:auth:web:login -d -a myhuborg
@@ -46,18 +48,38 @@ Providing the business side of the Alexa interface for Hospital Room Manager.
     sfdx force:org:open
     ```
 
-Or, deploy to SFDX using the button below:
+1. Activate Process Buider flow: "Alexa Update Status"
+
+
+### Salesforce DX (SFDX) in the Cloud
+
+Deploy using SFDX, click the button below:
 
 [![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com/deploy?template=https://github.com/chadevanssf/salesforce-hospital-room)
 
+### Salesforce Package in the Cloud
+
+1. Deploy via Metadata API, click the button below
+
+  <a href="https://githubsfdeploy.herokuapp.com"><img alt="Deploy to Salesforce"         src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png"></a>
+
+1. Use Import Wizard to import the data:
+
+  force-ide/data/hospital_rooms.csv
+
 ## Helpful commands
 
-* Convert source code (e.g. eclipse extract) into SFDX format:
+* Convert MDAPI format (e.g. Force IDE) into SFDX format:
   ```sh
-  sfdx force:mdapi:convert -r ./src
+  sfdx force:mdapi:convert -r ./force-ide/src/
   ```
   * see [https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html](https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html)
   * FYI: run in the root folder of the eclipse project, files end up in ./force-app/main/default/ folder structure.
+
+* Convert SFDX format into MDAPI (e.g. Force IDE format):
+  ```sh
+  sfdx force:source:convert -d ./force-ide/src/ --packagename hospital-room-manager
+  ```
 
 * Export the latest data
   ```sh
