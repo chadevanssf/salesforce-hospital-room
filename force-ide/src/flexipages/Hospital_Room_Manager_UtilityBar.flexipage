@@ -5,6 +5,8 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Hospital Room Manager UtilityBar</masterLabel>
-    <pageTemplate>one:utilityBarTemplateDesktop</pageTemplate>
+    <template>
+        <name>one:utilityBarTemplateDesktop</name>
+    </template>
     <type>UtilityBar</type>
 </FlexiPage>

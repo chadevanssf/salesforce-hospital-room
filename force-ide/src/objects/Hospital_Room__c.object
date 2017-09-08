@@ -46,15 +46,6 @@
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>Mobile</compactLayoutAssignment>
-    <compactLayouts>
-        <fullName>Mobile</fullName>
-        <fields>Name</fields>
-        <fields>Floor__c</fields>
-        <fields>Room__c</fields>
-        <fields>Status__c</fields>
-        <fields>OwnerId</fields>
-        <label>Mobile</label>
-    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -64,6 +55,38 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <label>Hospital Room</label>
+    <nameField>
+        <label>Hospital Room Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Hopsital Rooms</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Floor__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Room__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Floor__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Room__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>OWNER.ALIAS</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Floor__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Room__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>OWNER.ALIAS</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>Floor__c</searchFilterFields>
+        <searchFilterFields>Room__c</searchFilterFields>
+        <searchFilterFields>OWNER.ALIAS</searchFilterFields>
+        <searchFilterFields>Status__c</searchFilterFields>
+        <searchResultsAdditionalFields>Floor__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Room__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <fields>
         <fullName>Alexa_Is_Ready__c</fullName>
         <defaultValue>false</defaultValue>
@@ -78,7 +101,7 @@
     <fields>
         <fullName>Display_Assigned_User__c</fullName>
         <externalId>false</externalId>
-        <formula>Owner:User.FirstName  &amp; &apos; &apos; &amp;  Owner:User.LastName</formula>
+        <formula>Owner:User.FirstName  &amp; ' ' &amp;  Owner:User.LastName</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Display_Assigned_User</label>
         <required>false</required>
@@ -90,7 +113,7 @@
     <fields>
         <fullName>Display_Floor__c</fullName>
         <externalId>false</externalId>
-        <formula>&apos;Floor: &apos; + TEXT(Floor__c)</formula>
+        <formula>'Floor: ' + TEXT(Floor__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Display_Floor</label>
         <required>false</required>
@@ -102,7 +125,7 @@
     <fields>
         <fullName>Display_Room__c</fullName>
         <externalId>false</externalId>
-        <formula>&apos;Room: &apos; + Room__c</formula>
+        <formula>'Room: ' + Room__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Display_Room</label>
         <required>false</required>
@@ -153,7 +176,7 @@
         <description>Can generate this UUID from PostgreSQL using: 
 select gen_random_uuid();
 May need to run this first:
-create extension &quot;pgcrypto&quot;;</description>
+create extension "pgcrypto";</description>
         <externalId>true</externalId>
         <label>Room ID</label>
         <length>50</length>
@@ -208,7 +231,15 @@ create extension &quot;pgcrypto&quot;;</description>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Hospital Room</label>
+    <compactLayouts>
+        <fullName>Mobile</fullName>
+        <fields>Name</fields>
+        <fields>Floor__c</fields>
+        <fields>Room__c</fields>
+        <fields>Status__c</fields>
+        <fields>OwnerId</fields>
+        <label>Mobile</label>
+    </compactLayouts>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -230,35 +261,4 @@ create extension &quot;pgcrypto&quot;;</description>
         <filterScope>Mine</filterScope>
         <label>My Rooms</label>
     </listViews>
-    <nameField>
-        <label>Hospital Room Name</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-    </nameField>
-    <pluralLabel>Hopsital Rooms</pluralLabel>
-    <searchLayouts>
-        <customTabListAdditionalFields>Floor__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Room__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>OWNER.ALIAS</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
-        <lookupDialogsAdditionalFields>Floor__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Room__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>OWNER.ALIAS</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Floor__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Room__c</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>OWNER.ALIAS</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
-        <searchFilterFields>NAME</searchFilterFields>
-        <searchFilterFields>Floor__c</searchFilterFields>
-        <searchFilterFields>Room__c</searchFilterFields>
-        <searchFilterFields>OWNER.ALIAS</searchFilterFields>
-        <searchFilterFields>Status__c</searchFilterFields>
-        <searchResultsAdditionalFields>Floor__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Room__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>OWNER.ALIAS</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
-    </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

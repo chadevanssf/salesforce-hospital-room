@@ -14,7 +14,7 @@ Providing the business side of the Alexa interface for Hospital Room Manager.
 
 1. Authenticate with your hub org (if not already done):
     ```
-    sfdx force:auth:web:login -d -a myhuborg
+    sfdx force:auth:web:login --setdefaultdevhubusername --setalias myhuborg
     ```
 
 1. Clone the salesforce-hospital-room repository:
@@ -25,7 +25,7 @@ Providing the business side of the Alexa interface for Hospital Room Manager.
 
 1. Create a scratch org and provide it with an alias (hrm):
     ```
-    sfdx force:org:create -s -f config/project-scratch-def.json -a hrm
+    sfdx force:org:create --definitionfile config/project-scratch-def.json --setdefaultusername --setalias hrm
     ```
 
 1. Push the app to your scratch org:
@@ -35,7 +35,7 @@ Providing the business side of the Alexa interface for Hospital Room Manager.
 
 1. Assign the Hospital_Room_Manager permission set to the default user:
     ```
-    sfdx force:user:permset:assign -n Hospital_Room_Manager
+    sfdx force:user:permset:assign --permsetname Hospital_Room_Manager
     ```
 
 1. Load sample data:
@@ -70,18 +70,25 @@ Deploy using SFDX, click the button below:
 ## Helpful commands
 
 * Convert MDAPI format (e.g. Force IDE) into SFDX format:
-  ```sh
-  sfdx force:mdapi:convert -r ./force-ide/src/
+  ```
+  sfdx force:mdapi:convert --rootdir ./force-ide/src/
   ```
   * see [https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html](https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html)
   * FYI: run in the root folder of the eclipse project, files end up in ./force-app/main/default/ folder structure.
 
 * Convert SFDX format into MDAPI (e.g. Force IDE format):
-  ```sh
-  sfdx force:source:convert -d ./force-ide/src/ --packagename hospital-room-manager
+  ```
+  sfdx force:source:convert --outputdir ./force-ide/src/ --packagename hospital-room-manager
   ```
 
+* Deploy MDAPI to a non-scratch org:
+  ```
+  sfdx force:auth:web:login --setalias hrm-org
+  sfdx force:mdapi:deploy --deploydir ./force-ide/src/ --targetusername hrm-org --wait 2
+  ```
+  Load the data and assign the permission set manually
+
 * Export the latest data
-  ```sh
+  ```
   sfdx force:data:tree:export --outputdir ./data --query ./data/Hospital_Room__c-query.soql --plan
   ```
