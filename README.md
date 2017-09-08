@@ -2,9 +2,11 @@
 
 Providing the business side of the Alexa interface for Hospital Room Manager.
 
-## Alexa and Heroku Front End
+## Installation Order
 
-See [https://github.com/chadevanssf/alexa-hospital-room](https://github.com/chadevanssf/alexa-hospital-room) for Alexa and Heroku front end installation.
+1. Install Salesforce backend (this project)
+1. Install Heroku app (see [https://github.com/chadevanssf/alexa-hospital-room](https://github.com/chadevanssf/alexa-hospital-room))
+1. Install Alexa Skill (see above)
 
 ## Installation Instructions
 
@@ -29,14 +31,14 @@ See [https://github.com/chadevanssf/alexa-hospital-room](https://github.com/chad
     sfdx force:source:push
     ```
 
-1. **TODO** Assign the nto permission set to the default user:
+1. Assign the Hospital_Room_Manager permission set to the default user:
     ```
-    sfdx force:user:permset:assign -n nto
+    sfdx force:user:permset:assign -n Hospital_Room_Manager
     ```
 
-1. **TODO** Load sample data:
+1. Load sample data:
     ```
-    sfdx force:data:tree:import --plan ./data/sample-data-Merchandise__c-plan.json
+    sfdx force:data:tree:import --plan ./data/Hospital_Room__c-plan.json
     ```
 
 1. Open the scratch org:
@@ -56,3 +58,8 @@ Or, deploy to SFDX using the button below:
   ```
   * see [https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html](https://developer.salesforce.com/blogs/developer-relations/2017/07/migrating-existing-projects-salesforce-dx.html)
   * FYI: run in the root folder of the eclipse project, files end up in ./force-app/main/default/ folder structure.
+
+* Export the latest data
+  ```sh
+  sfdx force:data:tree:export --outputdir ./data --query ./data/Hospital_Room__c-query.soql --plan
+  ```

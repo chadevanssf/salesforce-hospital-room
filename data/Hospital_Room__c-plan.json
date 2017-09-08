@@ -1,0 +1,10 @@
+[
+    {
+        "sobject": "Hospital_Room__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "Hospital_Room__cs.json"
+        ]
+    }
+]
